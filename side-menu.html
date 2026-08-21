@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jarus Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="side-menu.css">
+</head>
+<body>
+
+  <!-- Mobile top bar -->
+  <header class="topbar">
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="topbar-brand"><i class="fa-solid fa-bag-shopping"></i> Jarus Store</div>
+    <button class="topbar-cart" id="topbarCartBtn" aria-label="Open cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="cart-badge" id="cartBadgeMobile">0</span>
+    </button>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Side menu bar container -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="store-name">
+      <span class="brand"><i class="fa-solid fa-bag-shopping"></i> Jarus Store</span>
+      <span class="cart-badge-wrap">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </span>
+    </div>
+
+    <nav class="menu">
+
+      <div class="menu-group">
+        <p class="group-title">Main Navigation</p>
+        <a href="#" class="menu-item active" data-page="home"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#" class="menu-item" data-page="products"><i class="fa-solid fa-store"></i> Products</a>
+        <a href="#" class="menu-item" data-page="categories"><i class="fa-solid fa-border-all"></i> Categories</a>
+      </div>
+
+      <div class="menu-group">
+        <p class="group-title">Shopping</p>
+        <a href="#" class="menu-item" data-page="cart"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+        <a href="#" class="menu-item" data-page="orders"><i class="fa-solid fa-box"></i> My Orders</a>
+        <a href="#" class="menu-item" data-page="wishlist"><i class="fa-solid fa-heart"></i> Wishlist</a>
+      </div>
+
+      <div class="menu-group">
+        <p class="group-title">Account</p>
+        <a href="#" class="menu-item" data-page="profile"><i class="fa-solid fa-user"></i> Profile</a>
+        <a href="#" class="menu-item" data-page="settings"><i class="fa-solid fa-gear"></i> Settings</a>
+      </div>
+
+      <div class="menu-group">
+        <p class="group-title">System</p>
+        <a href="#" class="menu-item logout-link" id="logoutBtn" data-page="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+      </div>
+
+    </nav>
+  </aside>
+
+  <!-- Main content area -->
+  <main class="main-content">
+
+    <!-- HOME -->
+    <section class="page active" id="page-home">
+      <div class="hero">
+        <div class="hero-text">
+          <p class="eyebrow"><i class="fa-solid fa-sparkles"></i> Welcome back, Jarus</p>
+          <h1>Everyday essentials,<br>delivered simply.</h1>
+          <p class="lead">Jarus Store is a small e-commerce shop for everyday essentials — simple browsing, a clean cart, and fast checkout, all in one place.</p>
+          <button class="btn btn-primary hero-cta" data-goto="products"><i class="fa-solid fa-store"></i> Shop Now</button>
+        </div>
+        <div class="hero-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+      </div>
+
+      <div class="section-head">
+        <h2 class="section-heading">Featured this week</h2>
+        <a href="#" class="see-all" data-goto="products">See all <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="card-grid">
+        <div class="card feature-card">
+          <span class="badge badge-new">New</span>
+          <div class="product-thumb thumb-tote"><i class="fa-solid fa-bag-shopping"></i></div>
+          <h3>Canvas Tote Bag</h3>
+          <p class="muted">Durable everyday carry, natural cotton canvas.</p>
+          <p class="price">₱499</p>
+        </div>
+        <div class="card feature-card">
+          <span class="badge badge-sale">Sale</span>
+          <div class="product-thumb thumb-mug"><i class="fa-solid fa-mug-hot"></i></div>
+          <h3>Ceramic Mug Set</h3>
+          <p class="muted">Set of 2, matte glaze, dishwasher safe.</p>
+          <p class="price">₱349</p>
+        </div>
+        <div class="card feature-card">
+          <span class="badge badge-new">New</span>
+          <div class="product-thumb thumb-lamp"><i class="fa-solid fa-lightbulb"></i></div>
+          <h3>Desk Lamp</h3>
+          <p class="muted">Warm LED, 3 brightness levels.</p>
+          <p class="price">₱899</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="page" id="page-products">
+      <div class="page-header">
+        <div>
+          <h1>Products</h1>
+          <p class="lead">Browse our current catalog and add items to your cart.</p>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="productSearch" placeholder="Search products...">
+      </div>
+
+      <div class="card-grid product-grid" id="productGrid">
+        <div class="card product-card" data-search="canvas tote bag">
+          <span class="badge badge-new">New</span>
+          <div class="product-thumb thumb-tote"><i class="fa-solid fa-bag-shopping"></i></div>
+          <h3>Canvas Tote Bag</h3>
+          <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span class="muted">(128)</span></div>
+          <p class="price">₱499</p>
+          <div class="qty-stepper" data-id="tote">
+            <button class="qty-btn qty-minus" type="button">−</button>
+            <span class="qty-value">1</span>
+            <button class="qty-btn qty-plus" type="button">+</button>
+          </div>
+          <button class="btn btn-primary add-cart-btn" data-id="tote" data-name="Canvas Tote Bag" data-price="499" data-icon="fa-bag-shopping"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+
+        <div class="card product-card" data-search="ceramic mug set">
+          <span class="badge badge-sale">Sale</span>
+          <div class="product-thumb thumb-mug"><i class="fa-solid fa-mug-hot"></i></div>
+          <h3>Ceramic Mug Set</h3>
+          <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="muted">(94)</span></div>
+          <p class="price">₱349</p>
+          <div class="qty-stepper" data-id="mug">
+            <button class="qty-btn qty-minus" type="button">−</button>
+            <span class="qty-value">1</span>
+            <button class="qty-btn qty-plus" type="button">+</button>
+          </div>
+          <button class="btn btn-primary add-cart-btn" data-id="mug" data-name="Ceramic Mug Set" data-price="349" data-icon="fa-mug-hot"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+
+        <div class="card product-card" data-search="desk lamp">
+          <div class="product-thumb thumb-lamp"><i class="fa-solid fa-lightbulb"></i></div>
+          <h3>Desk Lamp</h3>
+          <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span class="muted">(61)</span></div>
+          <p class="price">₱899</p>
+          <div class="qty-stepper" data-id="lamp">
+            <button class="qty-btn qty-minus" type="button">−</button>
+            <span class="qty-value">1</span>
+            <button class="qty-btn qty-plus" type="button">+</button>
+          </div>
+          <button class="btn btn-primary add-cart-btn" data-id="lamp" data-name="Desk Lamp" data-price="899" data-icon="fa-lightbulb"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+
+        <div class="card product-card" data-search="wireless mouse">
+          <div class="product-thumb thumb-mouse"><i class="fa-solid fa-computer-mouse"></i></div>
+          <h3>Wireless Mouse</h3>
+          <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="muted">(210)</span></div>
+          <p class="price">₱650</p>
+          <div class="qty-stepper" data-id="mouse">
+            <button class="qty-btn qty-minus" type="button">−</button>
+            <span class="qty-value">1</span>
+            <button class="qty-btn qty-plus" type="button">+</button>
+          </div>
+          <button class="btn btn-primary add-cart-btn" data-id="mouse" data-name="Wireless Mouse" data-price="650" data-icon="fa-computer-mouse"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+      <p class="empty-state search-empty" id="searchEmpty" style="display:none;">No products match your search.</p>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="page" id="page-categories">
+      <h1>Categories</h1>
+      <p class="lead">Shop by category to find what you need faster.</p>
+
+      <div class="card-grid category-grid">
+        <div class="card category-card">
+          <div class="category-icon icon-home"><i class="fa-solid fa-couch"></i></div>
+          <h3>Home &amp; Living</h3>
+          <p class="muted">Mugs, lamps, and small decor pieces for your space.</p>
+        </div>
+        <div class="card category-card">
+          <div class="category-icon icon-bags"><i class="fa-solid fa-briefcase"></i></div>
+          <h3>Bags &amp; Accessories</h3>
+          <p class="muted">Totes, pouches, and everyday carry essentials.</p>
+        </div>
+        <div class="card category-card">
+          <div class="category-icon icon-tech"><i class="fa-solid fa-microchip"></i></div>
+          <h3>Tech &amp; Gadgets</h3>
+          <p class="muted">Simple, useful gadgets for work and study.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CART -->
+    <section class="page" id="page-cart">
+      <h1>Cart</h1>
+      <p class="lead">Review your items, adjust quantity, or remove them before checkout.</p>
+
+      <div class="cart-layout">
+        <div class="cart-items" id="cartList">
+          <p class="empty-state"><i class="fa-solid fa-cart-shopping"></i><br>Your cart is empty. Add items from the Products page.</p>
+        </div>
+
+        <div class="order-summary">
+          <h3><i class="fa-solid fa-receipt"></i> Order Summary</h3>
+          <div class="summary-row">
+            <span class="muted">Subtotal</span>
+            <span id="cartSubtotal">₱0</span>
+          </div>
+          <div class="summary-row">
+            <span class="muted">Shipping</span>
+            <span id="cartShipping">₱0</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="cartTotal">₱0</span>
+          </div>
+          <button class="btn btn-primary checkout-btn" id="checkoutBtn"><i class="fa-solid fa-lock"></i> Checkout</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MY ORDERS -->
+    <section class="page" id="page-orders">
+      <h1>My Orders</h1>
+      <p class="lead">A history of your recent purchases. New orders from checkout appear here as Pending.</p>
+
+      <div class="list-panel" id="ordersList"></div>
+    </section>
+
+    <!-- WISHLIST -->
+    <section class="page" id="page-wishlist">
+      <h1>Wishlist</h1>
+      <p class="lead">Saved items you might want to buy later.</p>
+
+      <div class="list-panel">
+        <div class="row-item">
+          <div class="row-main">
+            <span class="row-thumb"><i class="fa-solid fa-book"></i></span>
+            <div>
+              <strong>Leather Journal</strong>
+              <p class="muted">A5 dotted pages, saddle-brown cover.</p>
+            </div>
+          </div>
+          <button class="btn btn-small move-cart-btn" data-id="journal" data-name="Leather Journal" data-price="399" data-icon="fa-book"><i class="fa-solid fa-cart-plus"></i> Move to Cart</button>
+        </div>
+        <div class="row-item">
+          <div class="row-main">
+            <span class="row-thumb"><i class="fa-solid fa-bottle-water"></i></span>
+            <div>
+              <strong>Insulated Bottle</strong>
+              <p class="muted">Keeps drinks cold for up to 24 hours.</p>
+            </div>
+          </div>
+          <button class="btn btn-small move-cart-btn" data-id="bottle" data-name="Insulated Bottle" data-price="550" data-icon="fa-bottle-water"><i class="fa-solid fa-cart-plus"></i> Move to Cart</button>
+        </div>
+        <div class="row-item">
+          <div class="row-main">
+            <span class="row-thumb"><i class="fa-solid fa-box-archive"></i></span>
+            <div>
+              <strong>Desk Organizer</strong>
+              <p class="muted">Bamboo tray with 4 compartments.</p>
+            </div>
+          </div>
+          <button class="btn btn-small move-cart-btn" data-id="organizer" data-name="Desk Organizer" data-price="299" data-icon="fa-box-archive"><i class="fa-solid fa-cart-plus"></i> Move to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="page" id="page-profile">
+      <h1>Profile</h1>
+      <p class="lead">Sample user information for this account.</p>
+
+      <div class="profile-card">
+        <div class="avatar">MJ</div>
+        <div>
+          <h3>Maine Jarus Consul</h3>
+          <p class="muted">2nd Year · BS Information Technology</p>
+        </div>
+      </div>
+
+      <div class="list-panel info-panel">
+        <div class="info-row"><span class="muted"><i class="fa-solid fa-user"></i> Name</span><span>Maine Jarus Consul</span></div>
+        <div class="info-row"><span class="muted"><i class="fa-solid fa-envelope"></i> Email</span><span>jarus@gmail.com</span></div>
+        <div class="info-row"><span class="muted"><i class="fa-solid fa-graduation-cap"></i> Course</span><span>BS Information Technology</span></div>
+        <div class="info-row"><span class="muted"><i class="fa-solid fa-layer-group"></i> Year Level</span><span>2nd Year</span></div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="page" id="page-settings">
+      <h1>Settings</h1>
+      <p class="lead">Manage your account preferences.</p>
+
+      <div class="list-panel">
+        <div class="row-item">
+          <div class="row-main">
+            <span class="row-thumb"><i class="fa-solid fa-user-gear"></i></span>
+            <div>
+              <strong>Account Settings</strong>
+              <p class="muted">Update your name, email, and password.</p>
+            </div>
+          </div>
+          <button class="btn btn-small">Manage</button>
+        </div>
+        <div class="row-item">
+          <div class="row-main">
+            <span class="row-thumb"><i class="fa-solid fa-shield-halved"></i></span>
+            <div>
+              <strong>Privacy Settings</strong>
+              <p class="muted">Control who can see your profile and orders.</p>
+            </div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="row-item">
+          <div class="row-main">
+            <span class="row-thumb"><i class="fa-solid fa-bell"></i></span>
+            <div>
+              <strong>Notification Settings</strong>
+              <p class="muted">Choose which updates you want to receive.</p>
+            </div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="row-item">
+          <div class="row-main">
+            <span class="row-thumb"><i class="fa-solid fa-circle-half-stroke"></i></span>
+            <div>
+              <strong>Theme</strong>
+              <p class="muted">Switch between dark and light mode.</p>
+            </div>
+          </div>
+          <button class="btn btn-small" id="themeToggleBtn">Toggle Theme</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGOUT -->
+    <section class="page" id="page-logout">
+      <div class="logout-panel">
+        <div class="logout-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
+        <h1>Logout</h1>
+        <p class="lead">This page represents the logout section of the app.</p>
+        <p class="muted">Clicking below will end your current session. In this assignment build, it just shows a confirmation message — no account is actually connected yet.</p>
+        <button class="btn btn-primary" id="logoutPageBtn"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Mobile bottom nav -->
+  <nav class="bottom-nav" id="bottomNav">
+    <a href="#" class="bottom-nav-item active" data-page="home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="#" class="bottom-nav-item" data-page="products"><i class="fa-solid fa-store"></i><span>Shop</span></a>
+    <a href="#" class="bottom-nav-item" data-page="cart"><i class="fa-solid fa-cart-shopping"></i><span>Cart</span></a>
+    <a href="#" class="bottom-nav-item" data-page="wishlist"><i class="fa-solid fa-heart"></i><span>Wishlist</span></a>
+    <a href="#" class="bottom-nav-item" data-page="profile"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+  </nav>
+
+<script src="side-menu.js"></script>
+</body>
+</html>
